@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #030712;
+  --foreground: #f8fafc;
+  --border: rgba(255, 255, 255, 0.1);
+  --accent: #38bdf8;
+  --accent-hover: #0284c7;
+  --accent-muted: rgba(56, 189, 248, 0.15);
+  --font-heading: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(56, 189, 248, 0.3);
+  color: #ffffff;
+}
+
+/* Shimmer / Gradient text animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-text {
+  background-size: 200% auto;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* Hardware accelerated transitions */
+.gpu-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* From Uiverse.io by gharsh11032000 - Applied to Project Cards */
+.uiverse-tilt-card {
+  width: 100%;
+  min-height: 380px;
+  padding: 24px;
+  color: white;
+  background: linear-gradient(#050a17, #050a17) padding-box,
+              linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transform-origin: right bottom;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.uiverse-tilt-card .main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.uiverse-tilt-card .card-header-line span:first-child {
+  font-weight: 600;
+  color: #94a3b8;
+  margin-right: 6px;
+  font-family: monospace;
+  font-size: 11px;
+}
+
+.uiverse-tilt-card .heading {
+  font-size: 22px;
+  margin: 16px 0 8px;
+  font-weight: 700;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.uiverse-tilt-card:hover .heading {
+  color: #38bdf8;
+}
+
+.uiverse-tilt-card .categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.uiverse-tilt-card .categories span {
+  background-color: #e81cff;
+  color: #ffffff;
+  padding: 4px 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px;
+  border-radius: 50em;
+  letter-spacing: 0.05em;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.uiverse-tilt-card .categories span:hover {
+  transform: scale(1.05);
+  background-color: #40c9ff;
+}
+
+.uiverse-tilt-card .card-footer-line {
+  font-weight: 600;
+  color: #94a3b8;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 16px;
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.uiverse-tilt-card:hover {
+  transform: rotate(4deg) translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(232, 28, 255, 0.35);
+}
+
+/* From Uiverse.io by joe-watson-sbf - Applied to Skills Display */
+.uiverse-skills-container {
+  width: 100%;
+  min-height: 290px;
+  border-radius: 16px;
+  background: #030712;
+  display: flex;
+  gap: 8px;
+  padding: 0.6em;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+  overflow-y: hidden;
+  backdrop-filter: blur(16px);
+}
+
+.uiverse-skill-panel {
+  height: 100%;
+  min-height: 270px;
+  flex: 1;
+  min-width: 65px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #0b1120;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+}
+
+.uiverse-skill-panel:hover {
+  flex: 3.8;
+  min-width: 200px;
+  background: linear-gradient(145deg, #0f172a, #1e1b4b);
+  border-color: #ff568e;
+  box-shadow: 0 0 30px rgba(255, 86, 142, 0.25);
+}
+
+.uiverse-skill-panel .skill-title-rotate {
+  min-width: 12em;
+  padding: 0.5em;
+  text-align: center;
+  transform: rotate(-90deg);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  color: #38bdf8;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-family: monospace;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.uiverse-skill-panel:hover .skill-title-rotate {
+  transform: rotate(0);
+  color: #ff568e;
+  font-size: 16px;
+  min-width: auto;
+  white-space: normal;
+}
+
+.uiverse-skill-panel .skill-reveal-details {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease 0.15s, max-height 0.4s ease;
+  width: 100%;
+}
+
+.uiverse-skill-panel:hover .skill-reveal-details {
+  opacity: 1;
+  max-height: 180px;
+  margin-top: 14px;
+}
+
+/* Print styles for Resume */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, footer, nav, .no-print {
+    display: none !important;
+  }
+}

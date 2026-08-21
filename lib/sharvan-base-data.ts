@@ -1,0 +1,533 @@
+export interface ProjectItem {
+  id: string;
+  slug: string;
+  title: string;
+  tagline: string;
+  category: "Full-Stack" | "Interactive 3D / Games" | "Algorithms / AI" | "Frontend Architecture";
+  description: string;
+  longDescription: string;
+  metrics: { label: string; value: string }[];
+  technologies: string[];
+  architecture: string[];
+  liveUrl: string;
+  githubUrl?: string;
+  featured: boolean;
+  order: number;
+  accentColor: string;
+  previewGradient: string;
+  status: "Live & Deployed" | "Active Production" | "Open Source";
+}
+
+export interface SkillCategory {
+  name: string;
+  skills: {
+    name: string;
+    level: number; // 0 - 100
+    icon?: string;
+    badge?: string;
+  }[];
+}
+
+export interface TimelineItem {
+  id: string;
+  period: string;
+  title: string;
+  institution: string;
+  location: string;
+  type: "Education" | "Leadership" | "Milestone" | "Experience" | "Internship";
+  score?: string;
+  highlights: string[];
+}
+
+export interface AchievementItem {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  description: string;
+  badge: string;
+}
+
+export interface SharvanBaseConfig {
+  profile: {
+    name: string;
+    title: string;
+    subheading: string;
+    aboutStory: string;
+    email: string;
+    phone: string;
+    location: string;
+    university: string;
+    degree: string;
+    cgpa: string;
+    availableForHire: boolean;
+    availabilityStatus: string;
+    socials: {
+      github: string;
+      linkedin: string;
+      portfolio: string;
+      email: string;
+    };
+    stats: {
+      projectsCompleted: number;
+      teamsLed: number;
+      academicCgpa: number;
+      codeLanguages: number;
+    };
+  };
+  editorial?: {
+    aboutEyebrow: string;
+    aboutTitle: string;
+    aboutDescription: string;
+    heroHeadline: string;
+    heroTagline: string;
+    heroRole: string;
+    whatIBuild: { title: string; desc: string; tag: string }[];
+  };
+  theme: {
+    accentColor: string; // e.g. '#38bdf8', '#818cf8', '#34d399', '#f43f5e'
+    accentName: string;
+    bgStyle: "mesh" | "particles" | "constellation";
+  };
+  projects: ProjectItem[];
+  skills: SkillCategory[];
+  timeline: TimelineItem[];
+  achievements: AchievementItem[];
+}
+
+export const initialSharvanBaseData: SharvanBaseConfig = {
+  profile: {
+    name: "C S SHARVAN SAI",
+    title: "Full Stack Developer & Creative Technologist",
+    subheading: "Crafting fluid interactive web systems, algorithmic engines, dynamic 3D experiences, and modern full-stack architectures.",
+    aboutStory:
+      "I’m Sharvan Sai, a full stack developer and creative technologist focused on building modern digital experiences, intelligent applications and interfaces that combine engineering with visual storytelling.",
+    email: "sharvansai123@gmail.com",
+    phone: "+91 8328226454",
+    location: "Kattankulathur, Chennai / Vijayawada, India",
+    university: "SRM Institute of Science and Technology",
+    degree: "3rd Year B.Tech in Computer Science and Engineering",
+    cgpa: "9.05",
+    availableForHire: true,
+    availabilityStatus: "Available for High-Impact Software Engineering Roles & Creative Tech Projects",
+    socials: {
+      github: "https://github.com",
+      linkedin: "https://linkedin.com",
+      portfolio: "#",
+      email: "mailto:sharvansai123@gmail.com",
+    },
+    stats: {
+      projectsCompleted: 8,
+      teamsLed: 6,
+      academicCgpa: 9.05,
+      codeLanguages: 5,
+    },
+  },
+  editorial: {
+    heroHeadline: "SHARVAN SAI",
+    heroTagline: "CODE • DESIGN • INNOVATE",
+    heroRole: "FULL STACK DEVELOPER • AI/ML • CREATIVE TECHNOLOGIST",
+    aboutEyebrow: "ABOUT ME",
+    aboutTitle: "BUILDING DIGITAL EXPERIENCES WITH CODE.",
+    aboutDescription:
+      "I’m Sharvan Sai, a full stack developer and creative technologist focused on building modern digital experiences, intelligent applications and interfaces that combine engineering with visual storytelling.",
+    whatIBuild: [
+      {
+        title: "Interactive Web Experiences",
+        desc: "Fluid 3D WebGL scenes, physics-based simulations, and interactive 60fps web game architectures.",
+        tag: "WEBGL / GSAP",
+      },
+      {
+        title: "Full Stack Applications",
+        desc: "Scalable cloud services, responsive state machines, and dynamic theming platforms like NEXORA.",
+        tag: "REACT / NEXT.JS / NODE",
+      },
+      {
+        title: "AI / ML Systems",
+        desc: "Intelligent conversational bots, graph search heuristic labs, and autonomous route visualizers.",
+        tag: "PYTHON / A* / AI",
+      },
+      {
+        title: "Creative Developer Tools",
+        desc: "Bespoke design token engines, generative algorithms, and high-performance tactile interfaces.",
+        tag: "CREATIVE TECH",
+      },
+      {
+        title: "Experimental Interfaces",
+        desc: "SVG mask portals, gesture-driven canvas physics, and cinematic editorial web experiences.",
+        tag: "SVG / SHADERS",
+      },
+    ],
+  },
+  theme: {
+    accentColor: "#a855f7",
+    accentName: "Electric Violet",
+    bgStyle: "constellation",
+  },
+  projects: [
+    {
+      id: "tech-gaming-hub",
+      slug: "techgaminghub",
+      title: "Tech Gaming Hub",
+      tagline: "Comprehensive Online Gaming Platform with 20+ Interactive Games",
+      category: "Interactive 3D / Games",
+      description:
+        "High-performance interactive multi-game portal featuring 20+ curated responsive web games, dynamic audio synthesis, score leaderboards, and instant-play touch/keyboard mechanics.",
+      longDescription:
+        "Tech Gaming Hub is a flagship creative web gaming suite engineered for smooth 60fps execution directly in browser. Built with responsive canvas rendering, sound synthesizers, persistent local storage state, and custom game physics across retro, arcade, and puzzle genres.",
+      metrics: [
+        { label: "Interactive Games", value: "20+" },
+        { label: "Frame Rate", value: "60 FPS" },
+        { label: "Load Time", value: "< 0.8s" },
+      ],
+      technologies: ["JavaScript ES6+", "HTML5 Canvas", "Web Audio API", "CSS Grid/Flexbox", "Netlify CI/CD"],
+      architecture: [
+        "Stateful Game Loop Controller with requestAnimationFrame sync",
+        "Zero-dependency custom 2D collision detection and physics engine",
+        "Responsive touch control virtual d-pad overlay for mobile viewports",
+        "Automated score persistence and achievement validation engine",
+      ],
+      liveUrl: "https://techgaminghub.netlify.app",
+      featured: true,
+      order: 1,
+      accentColor: "#ec4899",
+      previewGradient: "from-pink-500/20 via-purple-500/10 to-indigo-900/30",
+      status: "Live & Deployed",
+    },
+    {
+      id: "sai-games-online",
+      slug: "sai-games-online",
+      title: "Sai Games Online",
+      tagline: "Fast-Paced Arcade & Modern Browser Mini-Games Portal",
+      category: "Interactive 3D / Games",
+      description:
+        "Vibrant browser game arcade engineered with modular game states, responsive touch controls, instant session restarts, and competitive score tracking.",
+      longDescription:
+        "An engaging digital playground hosting a diverse lineup of arcade classics and original web games. Designed with lightweight modern CSS, particle explosion effects, and ultra-low latency inputs across desktop and mobile devices.",
+      metrics: [
+        { label: "Game Modes", value: "Arcade & Logic" },
+        { label: "Mobile Touch", value: "100% Native" },
+        { label: "Latency", value: "< 16ms" },
+      ],
+      technologies: ["HTML5", "CSS3 Animations", "JavaScript", "LocalStorage API", "Netlify"],
+      architecture: [
+        "Event-driven game state manager with restart and pause cycles",
+        "Particle burst animations using lightweight DOM & Canvas rendering",
+        "Adaptive screen coordinate scaling for all mobile aspect ratios",
+      ],
+      liveUrl: "https://sai-games-online.netlify.app",
+      featured: true,
+      order: 2,
+      accentColor: "#a855f7",
+      previewGradient: "from-purple-500/20 via-violet-500/10 to-slate-900/30",
+      status: "Live & Deployed",
+    },
+    {
+      id: "av-route-planner",
+      slug: "avrouteplanner",
+      title: "AV Route Planner",
+      tagline: "Autonomous Vehicle Algorithm Learning Lab & Grid Simulator",
+      category: "Algorithms / AI",
+      description:
+        "Interactive algorithm visualization suite comparing BFS, DFS, Dijkstra's, and A* pathfinding with real-time obstacle avoidance on worldwide city graphs and custom grid scenarios.",
+      longDescription:
+        "AV Route Planner is an educational and engineering visualization tool designed to explain complex graph search algorithms. It allows real-time manipulation of autonomous vehicle navigation grids, interactive heuristic weight adjustments, JSON scenario import/export, and side-by-side performance benchmarking.",
+      metrics: [
+        { label: "Algorithms", value: "BFS, DFS, Dijkstra, A*" },
+        { label: "Preset Cities", value: "Chennai, London, Tokyo, NY" },
+        { label: "State Tracing", value: "Step-by-Step" },
+      ],
+      technologies: ["JavaScript (Algorithms)", "HTML5 Canvas", "Graph Data Structures", "Tailwind CSS", "JSON Engine"],
+      architecture: [
+        "Priority Queue & Heuristic Distance calculation (Manhattan / Euclidean)",
+        "Step-by-step frontier, explored, and optimal path backtracking visualizer",
+        "Real-time dynamic obstacle placement with collision rerouting",
+        "Scenario exporter generating structured JSON graph schemas",
+      ],
+      liveUrl: "https://avrouteplanner.netlify.app",
+      featured: true,
+      order: 3,
+      accentColor: "#38bdf8",
+      previewGradient: "from-cyan-500/20 via-sky-500/10 to-blue-900/30",
+      status: "Live & Deployed",
+    },
+    {
+      id: "nexora-saas",
+      slug: "nexorabytfi",
+      title: "NEXORA",
+      tagline: "Dynamic Multi-Step SaaS Web Theming & Generator Platform",
+      category: "Full-Stack",
+      description:
+        "Full-stack SaaS application that dynamically generates fully customized, themed business websites based on a 3-stage industry onboarding flow with real-time palette remapping.",
+      longDescription:
+        "NEXORA introduces an adaptive theming engine that automatically restructures layout grids, color psychology tokens, typography sets, and copy suggestions tailored to distinct industry verticals (Tech, Healthcare, Retail, Consulting).",
+      metrics: [
+        { label: "Onboarding Flow", value: "3-Stage Dynamic" },
+        { label: "Theme Generation", value: "Real-time" },
+        { label: "UI Polish", value: "Dark Glass Luxury" },
+      ],
+      technologies: ["Full-Stack JavaScript", "Tailwind CSS", "State Machine", "Responsive Layout Engine", "Netlify"],
+      architecture: [
+        "Multi-stage progressive onboarding workflow with validation",
+        "CSS Variable theming pipeline swapping entire design tokens on the fly",
+        "Dynamic layout generation based on selected vertical parameters",
+      ],
+      liveUrl: "https://nexorabytfi.netlify.app",
+      featured: true,
+      order: 4,
+      accentColor: "#10b981",
+      previewGradient: "from-emerald-500/20 via-teal-500/10 to-slate-900/30",
+      status: "Live & Deployed",
+    },
+    {
+      id: "sharvanis-boutique",
+      slug: "sharvanis-beautyparlour-boutique",
+      title: "Sharvani's Beauty Parlour & Boutique",
+      tagline: "Full-Stack Business Platform with Custom AI Chatbot & WhatsApp Booking",
+      category: "Full-Stack",
+      description:
+        "Production-grade business portal featuring service catalogs, bridal showcase galleries, WhatsApp & Instagram booking bridges, and an interactive AI chatbot.",
+      longDescription:
+        "Built to streamline customer acquisition and service scheduling. Features dark/light mode toggles, instant WhatsApp booking pre-fills, an interactive bridal gallery with modal previews, and an integrated smart FAQ chatbot.",
+      metrics: [
+        { label: "Customer Inquiries", value: "Instant AI Chat" },
+        { label: "Booking Flows", value: "WhatsApp & IG" },
+        { label: "Theme Support", value: "Dark & Light" },
+      ],
+      technologies: ["JavaScript ES6+", "HTML5/CSS3", "AI Chatbot Engine", "WhatsApp Business API", "Netlify"],
+      architecture: [
+        "Custom rule-based & conversational AI assistant for 24/7 service FAQs",
+        "Dynamic WhatsApp message encoder with selected service parameters",
+        "High-density responsive photo gallery with lazy loading and lightbox",
+      ],
+      liveUrl: "https://sharvanis-beautyparlour-botique.netlify.app",
+      featured: true,
+      order: 5,
+      accentColor: "#f59e0b",
+      previewGradient: "from-amber-500/20 via-orange-500/10 to-slate-900/30",
+      status: "Live & Deployed",
+    },
+    {
+      id: "sharvan-portfolio-v1",
+      slug: "cssharvansai-portfolio",
+      title: "Personal Portfolio Website",
+      tagline: "Modern Responsive Developer Showcase",
+      category: "Frontend Architecture",
+      description:
+        "Original developer portfolio showcasing technical foundations, interactive navigation, project previews, and clean semantic architecture.",
+      longDescription:
+        "A streamlined personal website highlighting core software engineering projects, academic background at SRM IST, and interactive UI components.",
+      metrics: [
+        { label: "Responsiveness", value: "100% Mobile Ready" },
+        { label: "Lighthouse Score", value: "98+" },
+      ],
+      technologies: ["HTML5", "CSS3 Modern Grid", "Vanilla JavaScript", "Netlify"],
+      architecture: [
+        "Zero-dependency clean semantic DOM architecture",
+        "CSS scroll-snap and smooth section navigations",
+      ],
+      liveUrl: "https://cssharvansai-portfolio.netlify.app",
+      featured: false,
+      order: 6,
+      accentColor: "#6366f1",
+      previewGradient: "from-indigo-500/20 via-blue-500/10 to-slate-900/30",
+      status: "Live & Deployed",
+    },
+  ],
+  skills: [
+    {
+      name: "Programming Languages",
+      skills: [
+        { name: "Java", level: 90, badge: "Core OOP / Data Structures" },
+        { name: "C++", level: 88, badge: "Algorithms & Low-Level" },
+        { name: "Python", level: 85, badge: "Scripting & AI Models" },
+        { name: "JavaScript / TypeScript", level: 92, badge: "Modern ES6+ / TS" },
+      ],
+    },
+    {
+      name: "Web & Frontend Architecture",
+      skills: [
+        { name: "React & Next.js (App Router)", level: 92, badge: "SSR / Components" },
+        { name: "Tailwind CSS & Modern CSS", level: 95, badge: "Fluid Design Systems" },
+        { name: "Three.js / WebGL", level: 80, badge: "3D Particles & Meshes" },
+        { name: "Framer Motion & GSAP", level: 88, badge: "Choreographed Motion" },
+        { name: "HTML5 Canvas API", level: 86, badge: "Game Loops & Drawing" },
+      ],
+    },
+    {
+      name: "Backend & Database",
+      skills: [
+        { name: "Node.js & Next.js API Routes", level: 85, badge: "RESTful Serverless" },
+        { name: "PHP", level: 80, badge: "Backend Web Logic" },
+        { name: "MySQL & Relational DBs", level: 86, badge: "Schema Design & Queries" },
+        { name: "DBMS & ER Modeling", level: 90, badge: "Normalization & Acid" },
+      ],
+    },
+    {
+      name: "Core Computer Science & AI",
+      skills: [
+        { name: "Graph Search: BFS, DFS, Dijkstra, A*", level: 92, badge: "Pathfinding" },
+        { name: "Operating Systems & CPU Scheduling", level: 88, badge: "Process Sync" },
+        { name: "Computer Organization & Pipelining", level: 84, badge: "Hardware Architecture" },
+        { name: "Data Structures & Complexity Analysis", level: 90, badge: "Time/Space Optimization" },
+      ],
+    },
+    {
+      name: "Developer Tools & Workflow",
+      skills: [
+        { name: "Git & GitHub Version Control", level: 92, badge: "Collaborative Workflows" },
+        { name: "Linux / Unix Shell", level: 85, badge: "CLI Automation" },
+        { name: "VS Code & Debugging Suite", level: 95, badge: "Productivity" },
+        { name: "Netlify & Vercel Deployment", level: 90, badge: "CI/CD Pipelines" },
+      ],
+    },
+  ],
+  timeline: [
+    {
+      id: "internship-google-aiml",
+      period: "Apr 2026 — Jun 2026 (8 Weeks)",
+      title: "Google AI-ML Virtual Intern",
+      institution: "EduSkills • AICTE • Google for Developers",
+      location: "Virtual / Remote (India)",
+      type: "Internship",
+      score: "Grade: O (Outstanding — 90-100%)",
+      highlights: [
+        "Selected for prestigious 8-Week AICTE – EduSkills Virtual Internship supported by Google for Developers (Certificate ID: 4b859f21b1d7750a5fc6).",
+        "Trained CNNs and convolutional neural networks with TensorFlow from first principles for advanced image recognition and classification.",
+        "Built on-device product image search and object detection models using TensorFlow Lite and Model Maker with mobile and web backend pipelines.",
+        "Graduated with top Grade 'O' (Outstanding 90-100%) in final AI-ML assessment test and practical project submissions.",
+      ],
+    },
+    {
+      id: "edu-srm",
+      period: "3rd Year (Aug 2024 — Present)",
+      title: "B.Tech in Computer Science and Engineering",
+      institution: "SRM Institute of Science and Technology",
+      location: "Kattankulathur, Tamil Nadu",
+      type: "Education",
+      score: "CGPA: 9.05 / 10.0",
+      highlights: [
+        "Specializing in Software Engineering, Graph Algorithms, and Modern Web Systems.",
+        "Maintained top-tier academic standing with 9.05 CGPA across computer science core curriculum.",
+        "Actively building production web applications, algorithm visualizers, and interactive game hubs.",
+      ],
+    },
+    {
+      id: "edu-chaitanya",
+      period: "Jun 2022 — Apr 2024",
+      title: "Intermediate (M.P.C — Math, Physics, Chemistry)",
+      institution: "Sri Chaitanya Junior College",
+      location: "Vijayawada, Andhra Pradesh",
+      type: "Education",
+      score: "Percentage: 94.3%",
+      highlights: [
+        "Achieved 94.3% in state examinations with distinction in Mathematics and Physical Sciences.",
+        "Developed rigorous analytical and algorithmic problem-solving discipline.",
+      ],
+    },
+    {
+      id: "lead-technical",
+      period: "2024 — Present",
+      title: "Technical Team Lead & Project Coordinator",
+      institution: "Academic & Collaborative Engineering Teams",
+      location: "SRM IST",
+      type: "Leadership",
+      highlights: [
+        "Led and coordinated 6+ cross-functional technical project teams, ensuring timely delivery and effective git collaboration.",
+        "Produced technical posters and digital interactive media for academic presentations, bridging visual art and computer science.",
+      ],
+    },
+  ],
+  achievements: [
+    {
+      id: "ach-google-aiml",
+      title: "Google AI-ML Virtual Internship (Grade O - Outstanding)",
+      issuer: "AICTE • EduSkills • Google for Developers",
+      date: "Jun 2026",
+      description: "Completed 8-week intensive on TensorFlow, CNNs, object detection, and vision models with top Grade O.",
+      badge: "AI/ML Internship",
+    },
+    {
+      id: "ach-teams",
+      title: "Led 6+ Technical Engineering Teams",
+      issuer: "SRM Institute of Science and Technology",
+      date: "2024 - 2025",
+      description: "Successfully steered multi-developer teams across algorithmic, SaaS, and web game projects.",
+      badge: "Leadership",
+    },
+    {
+      id: "ach-academic",
+      title: "Academic Excellence — 9.05 CGPA & 94.3% MPC",
+      issuer: "SRM IST & Sri Chaitanya",
+      date: "2022 - Present",
+      description: "Consistently ranked in high-percentile tiers across mathematics, computer systems, and programming.",
+      badge: "Academics",
+    },
+    {
+      id: "ach-visual",
+      title: "Visual Design & Technical Poster Presenter",
+      issuer: "Departmental Symposiums",
+      date: "2024",
+      description: "Recognized for creative visual communication and interactive digital demonstration sketching.",
+      badge: "Creative Tech",
+    },
+  ],
+};
+
+const STORAGE_KEY = "sharvan_base_v1";
+
+export function getSharvanBaseData(): SharvanBaseConfig {
+  if (typeof window === "undefined") {
+    return initialSharvanBaseData;
+  }
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return initialSharvanBaseData;
+    const parsed = JSON.parse(raw);
+    const result = { ...initialSharvanBaseData, ...parsed };
+    // Strictly lock identity name
+    if (result.profile) {
+      result.profile.name = "C S SHARVAN SAI";
+    }
+    return result;
+  } catch {
+    return initialSharvanBaseData;
+  }
+}
+
+export function saveSharvanBaseData(data: SharvanBaseConfig): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    // Strictly lock identity name
+    if (data.profile) {
+      data.profile.name = "C S SHARVAN SAI";
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    window.dispatchEvent(new Event("sharvan-base-updated"));
+
+    // Sync to server API for all visitors
+    fetch("/api/sharvan-base", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).catch((err) => console.warn("API sync background notice:", err));
+
+    return true;
+  } catch (e) {
+    console.error("Failed to save to Sharvan Base", e);
+    return false;
+  }
+}
+
+export function resetSharvanBaseData(): SharvanBaseConfig {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem(STORAGE_KEY);
+    window.dispatchEvent(new Event("sharvan-base-updated"));
+    fetch("/api/sharvan-base", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(initialSharvanBaseData),
+    }).catch(() => {});
+  }
+  return initialSharvanBaseData;
+}
